@@ -87,6 +87,9 @@ The most recent Git version of the code is located at:
 
 	https://github.com/craftsmancoding/custom-content-type-manager
 
+= 0.9.8.9 =
+* Reverted all changes made to the plugin from versions 0.9.8.7 and 0.9.8.8. Those versions contained malicious code. This version is identical to 0.9.8.6.
+
 = 0.9.8.6 =
 
 * Fixed error renaming custom fields.
