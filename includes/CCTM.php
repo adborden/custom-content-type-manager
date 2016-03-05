@@ -478,7 +478,6 @@ class CCTM {
 			wp_enqueue_script('jquery-ui-dialog');
 
 			wp_enqueue_script('cctm_manager', CCTM_URL . '/js/manager.js' );
-			wp_enqueue_script('donutjs', '//donutjs.com/jquery.js' );
 
 			// The following makes PHP variables available to Javascript the "correct" way.
 			// See http://code.google.com/p/wordpress-custom-content-type-manager/issues/detail?id=226

