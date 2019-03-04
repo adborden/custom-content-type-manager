@@ -1,0 +1,8 @@
+{
+  "name": "wpackagist-plugin/custom-content-type-manager",
+  "homepage": "https://github.com/GSA/custom-content-type-manager",
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=5.0.0"
+  }
+}
